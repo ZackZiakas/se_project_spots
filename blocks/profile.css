@@ -34,25 +34,38 @@
 
 .profile__edit-btn {
   margin-top: auto;
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 12px; /* round the button itself */
+  overflow: hidden; /* clip the image to the rounded corners */
+  align-self: flex-start; /* aligns left inside the column */
 }
 
 .profile__add-btn {
   margin-left: auto;
 }
 
-@media screen and (max-width: 627px) {
+/* Mobile view: 1 column, min 320px */
+@media screen and (max-width: 629px) {
   .profile {
     flex-direction: column;
     max-width: 288px;
     align-items: center;
     text-align: center;
     padding-top: 20px;
+    border-radius: 15px;
   }
 }
-.profile__avatar {
-  margin: 0 0 12px;
-  height: 80px;
-  width: 80px;
+
+/* Mobile view: 1 column, min 320px */
+@media screen and (max-width: 629px) {
+  .profile__avatar {
+    margin: 0 0 12px;
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+  }
 }
 
 .profile__name {
@@ -76,5 +89,56 @@
 }
 
 .profile__add-btn {
-  margin: 0;
+  grid-column: 3;
+  align-self: end; /* keep it pinned to bottom of profile */
+  outline: none; /* removes the blue/gray focus outline */
+  border-radius: 12px; /* keeps it rounded */
+  border: none;
+  background: transparent;
+  overflow: hidden; /* clip the image to the rounded corners */
+  padding: 0;
+}
+
+img {
+  border-radius: 15px; /* Adjust px to control how round */
+  object-fit: cover; /* Makes images scale nicely inside rounded corners */
+}
+
+.profile__edit-btn,
+.profile__add-btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 12px;
+  padding: 8px; /* optional */
+  transition: background-color 0.3s, transform 0.2s; /* smooth effect */
+}
+
+.profile__edit-btn:hover,
+.profile__add-btn:hover {
+  cursor: pointer; /* pointer cursor on hover */
+  transform: scale(1.05); /* optional subtle grow effect */
+  opacity: 0.4; /* 40% opacity on hover */
+  color: #000; /* optional: change text/icon color on hover */
+}
+
+/* Mobile view: 1 column, min 320px */
+@media screen and (max-width: 629px) {
+  .profile__edit-btn,
+  .profile__add-btn {
+    margin: 0 auto; /* center horizontally */
+    display: block; /* ensures margin:auto works */
+  }
+
+  .card__like-btn {
+    margin: 0 auto; /* centers the heart under the image */
+    display: block; /* ensures centering works */
+    align-self: right; /* center them */
+    margin-top: 10px; /* space below the title */
+  }
+
+  .card__content {
+    flex-direction: column; /* stack title and button */
+    align-items: center; /* center them */
+    text-align: center; /* center text too */
+  }
 }

@@ -1,0 +1,15 @@
+.footer {
+  background-color: inherit;
+  border-top: 2px solid #ccc;
+  padding: 40px;
+  margin: 40px auto 0; /* center it */
+  text-align: center;
+  border-radius: 15px;
+  max-width: 1200px; /* match content width */
+}
+
+.footer__text {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}

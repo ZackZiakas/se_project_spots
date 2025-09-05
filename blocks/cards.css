@@ -7,13 +7,20 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 413px);
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   gap: 40px 20px;
 }
 
-@media screen and (max-width: 627px) {
+@media screen and (max-width: 629px) {
   .cards__list {
     grid-template-columns: repeat(auto-fit, 288px);
+  }
+}
+
+/* Tablet view: 2 columns */
+@media screen and (max-width: 1320px) and (min-width: 630px) {
+  .cards__list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
