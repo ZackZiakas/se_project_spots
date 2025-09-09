@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 12px;
 }
 
 .card__title {
@@ -20,23 +21,31 @@
   line-height: 1.2; /* 120% line height */
   letter-spacing: 0; /* no extra spacing */
   margin: 0; /* remove default margin */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 284px;
+  display: block;
 }
 
 .card__like-btn {
-  background-image: url(../images/Like\ Icon.svg);
+  background-image: url(../images/Like\ Icon\ 2.0.svg);
   width: 23px;
   height: 20px;
   border: none;
   background-color: transparent;
   opacity: 40%;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 627px) {
   .card__image {
     height: 288px;
+    max-width: 250px; /* Prevents cropping the like button */
+    font-size: 16px;
   }
 }
 
 .card__like-btn:hover {
-  opacity: 2; /* 200% opacity on hover */
+  opacity: 1; /* 200% opacity on hover */
 }

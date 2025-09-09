@@ -1,107 +1,50 @@
+/* ---------- Profile Styles ---------- */
 .profile {
   display: flex;
   padding: 34px 0 20px;
-  border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
+  border-bottom: 1px solid rgba(33, 33, 33, 0.4);
 }
 
 .profile__avatar {
   height: 190px;
   width: 190px;
   margin-right: 20px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
 }
 
 .profile__column {
   display: flex;
   flex-direction: column;
+  margin: 0 0 20px;
 }
 
 .profile__name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limit to 3 lines */
+  -webkit-box-orient: vertical;
+  max-width: 600px; /* Desktop max-width */
   margin: 0 0 12px;
   font-weight: 500;
   font-size: 32px;
-  line-height: 1;
-}
-
-.profile__description {
-  margin: 0;
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  max-width: 420px;
-}
-
-.profile__edit-btn {
-  margin-top: auto;
-  background: transparent;
-  border: none;
-  padding: 0;
-  border-radius: 12px; /* round the button itself */
-  overflow: hidden; /* clip the image to the rounded corners */
-  align-self: flex-start; /* aligns left inside the column */
-}
-
-.profile__add-btn {
-  margin-left: auto;
-}
-
-/* Mobile view: 1 column, min 320px */
-@media screen and (max-width: 629px) {
-  .profile {
-    flex-direction: column;
-    max-width: 288px;
-    align-items: center;
-    text-align: center;
-    padding-top: 20px;
-    border-radius: 15px;
-  }
-}
-
-/* Mobile view: 1 column, min 320px */
-@media screen and (max-width: 629px) {
-  .profile__avatar {
-    margin: 0 0 12px;
-    width: 100px;
-    height: 100px;
-    border-radius: 15px;
-  }
-}
-
-.profile__name {
-  font-size: 32px;
-  margin: 0 0 6px;
-  max-width: 288px;
+  line-height: 1.4;
 }
 
 .profile__description {
   margin: 0 0 32px;
-  display: -webkit-box;
+  display: -webkit-box; /* Needed for multi-line ellipsis */
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 3; /* Limit to 3 lines */
   -webkit-box-orient: vertical;
-  max-width: 288px;
-}
-
-.profile__column {
-  margin: 0 0 20px;
-}
-
-.profile__add-btn {
-  grid-column: 3;
-  align-self: end; /* keep it pinned to bottom of profile */
-  outline: none; /* removes the blue/gray focus outline */
-  border-radius: 12px; /* keeps it rounded */
-  border: none;
-  background: transparent;
-  overflow: hidden; /* clip the image to the rounded corners */
-  padding: 0;
-}
-
-img {
-  border-radius: 15px; /* Adjust px to control how round */
-  object-fit: cover; /* Makes images scale nicely inside rounded corners */
+  max-width: 420px; /* Desktop width */
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+  opacity: 0.7;
 }
 
 .profile__edit-btn,
@@ -110,35 +53,87 @@ img {
   border: none;
   border-radius: 12px;
   padding: 8px; /* optional */
-  transition: background-color 0.3s, transform 0.2s; /* smooth effect */
+  overflow: hidden;
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
 }
 
-.profile__edit-btn:hover,
+.profile__edit-btn {
+  margin-top: auto;
+  align-self: flex-start; /* aligns left inside column */
+}
+
+.profile__add-btn {
+  margin-left: auto;
+  grid-column: 3; /* desktop grid positioning */
+  align-self: end; /* pinned to bottom of profile */
+}
+
+.profile__edit-btn:hover {
+  cursor: pointer; /* Keeps pointer cursor */
+  opacity: 1; /* Fully visible on hover */
+}
+
 .profile__add-btn:hover {
-  cursor: pointer; /* pointer cursor on hover */
-  transform: scale(1.05); /* optional subtle grow effect */
-  opacity: 0.4; /* 40% opacity on hover */
-  color: #000; /* optional: change text/icon color on hover */
+  cursor: pointer;
+  opacity: 0.8; /* Slightly faded on hover */
 }
 
-/* Mobile view: 1 column, min 320px */
+img {
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+/* ---------- Media Queries (Mobile) ---------- */
 @media screen and (max-width: 629px) {
-  .profile__edit-btn,
-  .profile__add-btn {
-    margin: 0 auto; /* center horizontally */
-    display: block; /* ensures margin:auto works */
+  /* Card adjustments */
+  .card__title {
+    max-width: 250px;
+    font-size: 16px;
   }
 
   .card__like-btn {
-    margin: 0 auto; /* centers the heart under the image */
-    display: block; /* ensures centering works */
-    align-self: right; /* center them */
-    margin-top: 10px; /* space below the title */
+    margin: 0 auto;
+    display: block;
+    margin-top: 10px;
+    align-self: right;
   }
 
   .card__content {
-    flex-direction: column; /* stack title and button */
-    align-items: center; /* center them */
-    text-align: center; /* center text too */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Profile adjustments */
+  .profile {
+    flex-direction: column;
+    max-width: 288px;
+    align-items: center;
+    text-align: center;
+    padding-top: 20px;
+    border-radius: 15px;
+  }
+
+  .profile__avatar {
+    margin: 0 0 12px;
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+  }
+
+  .profile__name {
+    max-width: 250px;
+    font-size: 16px;
+  }
+
+  .profile__description {
+    max-width: 288px;
+  }
+
+  .profile__edit-btn,
+  .profile__add-btn {
+    margin: 0 auto;
+    display: block;
   }
 }
