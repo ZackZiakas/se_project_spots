@@ -31,3 +31,6 @@ HTML, CSS, Flexbox, Grid, Mobile and Tablet responsive layouts.
 
 **The link to your deployed project on GitHub Pages**
 https://github.com/ZackZiakas/se_project_spots
+
+Google Drive link for video.
+https://drive.google.com/file/d/1-syQpLbE78u05FLZ7iXbgFH6CW22-EmY/view?usp=sharing
