@@ -4,6 +4,7 @@
   max-width: 100%; /* Prevent overflow */
   object-fit: cover;
   display: block;
+  border-radius: 8px;
 }
 
 .card__content {
@@ -24,7 +25,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 284px;
+  max-width: 350px;
   display: block;
 }
 
@@ -39,10 +40,9 @@
 }
 
 @media screen and (max-width: 627px) {
-  .card__image {
-    height: 288px;
-    max-width: 250px; /* Prevents cropping the like button */
-    font-size: 16px;
+  .card__title {
+    max-width: 250px; /* ensures long text wraps and doesn't push/crop the button */
+    font-size: 16px; /* matches design spec */
   }
 }
 

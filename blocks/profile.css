@@ -17,7 +17,6 @@
 .profile__column {
   display: flex;
   flex-direction: column;
-  margin: 0 0 20px;
 }
 
 .profile__name {
@@ -51,14 +50,14 @@
 .profile__add-btn {
   background-color: transparent;
   border: none;
-  border-radius: 12px;
-  padding: 8px; /* optional */
+  border-radius: 8px;
   overflow: hidden;
   transition: background-color 0.3s, transform 0.2s;
   cursor: pointer;
 }
 
 .profile__edit-btn {
+  padding: 0;
   margin-top: auto;
   align-self: flex-start; /* aligns left inside column */
 }
@@ -77,11 +76,6 @@
 .profile__add-btn:hover {
   cursor: pointer;
   opacity: 0.8; /* Slightly faded on hover */
-}
-
-img {
-  border-radius: 15px;
-  object-fit: cover;
 }
 
 /* ---------- Media Queries (Mobile) ---------- */

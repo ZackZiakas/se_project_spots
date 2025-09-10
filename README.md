@@ -29,7 +29,7 @@ The spots project is a responsive website with adjustments for both tablet and m
 **A description of the technologies and techniques used**
 HTML, CSS, Flexbox, Grid, Mobile and Tablet responsive layouts.
 
-**The link to your deployed project on GitHub Pages**
+**The link to your deployed project on GitHub Pages Updated**
 https://github.com/ZackZiakas/se_project_spots
 
 Google Drive link for video.
