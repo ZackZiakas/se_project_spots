@@ -39,13 +39,24 @@
   cursor: pointer;
 }
 
+.card__like-btn:hover {
+  opacity: 1; /* 200% opacity on hover */
+}
+
 @media screen and (max-width: 627px) {
   .card__title {
     max-width: 250px; /* ensures long text wraps and doesn't push/crop the button */
     font-size: 16px; /* matches design spec */
   }
-}
 
-.card__like-btn:hover {
-  opacity: 1; /* 200% opacity on hover */
+  .card__image {
+    height: 288px;
+  }
+
+  .card__like-btn {
+    margin: 0 auto;
+    display: block;
+    margin-top: 10px;
+    align-self: right;
+  }
 }
