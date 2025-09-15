@@ -52,11 +52,4 @@
   .card__image {
     height: 288px;
   }
-
-  .card__like-btn {
-    margin: 0 auto;
-    display: block;
-    margin-top: 10px;
-    align-self: right;
-  }
 }
