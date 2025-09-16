@@ -46,26 +46,29 @@
   opacity: 0.7;
 }
 
-.profile__edit-btn,
-.profile__add-btn {
-  background-color: transparent;
-  border: none;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: background-color 0.3s, transform 0.2s;
-  cursor: pointer;
-}
-
 .profile__edit-btn {
   padding: 0;
   margin-top: auto;
   align-self: flex-start; /* aligns left inside column */
+  background-color: transparent;
+  border: none;
 }
-
 .profile__add-btn {
+  display: flex;
   margin-left: auto;
-  grid-column: 3; /* desktop grid positioning */
-  align-self: end; /* pinned to bottom of profile */
+  width: 149px;
+  height: 52px;
+  border-radius: 8px;
+  background-color: #212121;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500px;
+  font-size: 16px;
+  line-height: 100%;
+  color: #fcf5e5;
+  align-self: flex-end;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile__edit-btn:hover {
@@ -104,9 +107,16 @@
     max-width: 288px;
   }
 
-  .profile__edit-btn,
+  .profile__edit-btn {
+    margin: 0;
+    padding: 20px;
+  }
+
   .profile__add-btn {
-    margin: 0 auto;
     display: block;
+    width: 100%;
+    grid-column: 3;
+    align-self: end;
+    align-items: end;
   }
 }

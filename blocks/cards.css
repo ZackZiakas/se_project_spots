@@ -18,7 +18,3 @@
     row-gap: 20px;
   }
 }
-
-.cards__list {
-  grid-template-columns: repeat(2, 1fr);
-}
