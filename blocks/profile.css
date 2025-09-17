@@ -47,11 +47,18 @@
 }
 
 .profile__edit-btn {
+  display: flex; /* needed for gap to work */
+  align-items: center; /* keeps icon + text aligned */
   padding: 0;
   margin-top: auto;
   align-self: flex-start; /* aligns left inside column */
   background-color: transparent;
   border: none;
+  opacity: 70%; /* use decimal instead of % */
+  gap: 8px; /* tighter spacing */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
 }
 .profile__add-btn {
   display: flex;
@@ -113,10 +120,15 @@
   }
 
   .profile__add-btn {
-    display: block;
-    width: 100%;
+    display: flex; /* make icon + text align in a row */
+    align-items: center; /* vertically centers them */
+    justify-content: center; /* centers everything in the button */
+    gap: 8px; /* space between icon and text */
+
+    width: 100%; /* full width for mobile */
     grid-column: 3;
     align-self: end;
-    align-items: end;
+    padding: 18px 32px;
+    border-radius: 8px;
   }
 }
