@@ -30,11 +30,11 @@
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-btn">
-              <img src="./images/Edit Icon.svg" alt="Edit " />Edit Profile
+              <img src="./images/Edit-icon.svg" alt="Edit " />Edit Profile
             </button>
           </div>
           <button type="button" class="profile__add-btn">
-            <img src="./images/Plus icon.svg" alt="New Post" />New Post
+            <img src="./images/Plus-icon.svg" alt="New Post" />New Post
           </button>
         </section>
         <section class="cards page__section">
@@ -113,6 +113,60 @@
       <footer class="footer">
         <p class="footer__text">© 2025 Spots. All rights reserved.</p>
       </footer>
+      <div class="modal">
+        <div class="modal__container">
+          <button type="button" class="modal__close-btn">X</button>
+          <h2 class="modal__title">Edit profile</h2>
+          <form class="modal__form">
+            <label for="profile-name-input" class="modal__label">
+              Name
+              <input
+                id="profile-name-input"
+                type="text"
+                class="modal__input"
+                placeholder="Type your name"
+              />
+            </label>
+            <label for="profile-description-input" class="modal__label">
+              Description
+              <input
+                id="profile-description-input"
+                type="text"
+                class="modal__input"
+                placeholder="Describe yourself"
+              />
+            </label>
+            <button type="submit" class="modal__submit-btn">Save</button>
+          </form>
+        </div>
+      </div>
+      <div class="modal modal_is-opened">
+        <div class="modal__container">
+          <button type="button" class="modal__close-btn">X</button>
+          <h2 class="modal__title">Edit profile</h2>
+          <form class="modal__form">
+            <label for="profile-image-input" class="modal__label">
+              Image Link
+              <input
+                id="card-image-input"
+                type="url"
+                class="modal__input"
+                placeholder="Place a link to picture"
+              />
+            </label>
+            <label for="profile-caption-input" class="modal__label">
+              Caption
+              <input
+                id="card-caption-input"
+                type="text"
+                class="modal__input"
+                placeholder="Type your caption"
+              />
+            </label>
+            <button type="submit" class="modal__submit-btn">Save</button>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>
