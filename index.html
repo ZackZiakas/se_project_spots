@@ -30,7 +30,7 @@
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-btn">
-              <img src="./images/Edit-icon.svg" alt="Edit " />Edit Profile
+              <img src="./images/Edit-icon.svg" alt="Edit" />Edit Profile
             </button>
           </div>
           <button type="button" class="profile__add-btn">
@@ -113,7 +113,7 @@
       <footer class="footer">
         <p class="footer__text">© 2025 Spots. All rights reserved.</p>
       </footer>
-      <div class="modal"></div>
+      <!-- Edit Profile Modal -->
       <div class="modal">
         <div class="modal__container">
           <button type="button" class="modal__close-btn">X</button>
@@ -141,12 +141,14 @@
           </form>
         </div>
       </div>
-      <div class="modal modal_is-opened">
+
+      <!-- New Post Modal -->
+      <div class="modal">
         <div class="modal__container">
           <button type="button" class="modal__close-btn">X</button>
           <h2 class="modal__title">New Post</h2>
           <form class="modal__form">
-            <label for="profile-image-input" class="modal__label">
+            <label for="card-image-input" class="modal__label">
               Image Link
               <input
                 id="card-image-input"
@@ -155,7 +157,7 @@
                 placeholder="Place a link to picture"
               />
             </label>
-            <label for="profile-caption-input" class="modal__label">
+            <label for="card-caption-input" class="modal__label">
               Caption
               <input
                 id="card-caption-input"
@@ -167,7 +169,5 @@
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
         </div>
-      </div>
-    </div>
-  </body>
+    </body>
 </html>
