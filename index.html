@@ -114,7 +114,7 @@
         <p class="footer__text">© 2025 Spots. All rights reserved.</p>
       </footer>
       <!-- Edit Profile Modal -->
-      <div class="modal">
+      <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
           <button type="button" class="modal__close-btn">X</button>
           <h2 class="modal__title">Edit profile</h2>
@@ -143,31 +143,36 @@
       </div>
 
       <!-- New Post Modal -->
-      <div class="modal">
-        <div class="modal__container">
-          <button type="button" class="modal__close-btn">X</button>
-          <h2 class="modal__title">New Post</h2>
-          <form class="modal__form">
-            <label for="card-image-input" class="modal__label">
-              Image Link
-              <input
-                id="card-image-input"
-                type="url"
-                class="modal__input"
-                placeholder="Place a link to picture"
-              />
-            </label>
-            <label for="card-caption-input" class="modal__label">
-              Caption
-              <input
-                id="card-caption-input"
-                type="text"
-                class="modal__input"
-                placeholder="Type your caption"
-              />
-            </label>
-            <button type="submit" class="modal__submit-btn">Save</button>
-          </form>
-        </div>
-    </body>
+<div class="modal" id="new-post-modal">
+  <div class="modal__container">
+    <button type="button" class="modal__close-btn">X</button>
+    <h2 class="modal__title">New Post</h2>
+    <form class="modal__form">
+      <label for="card-image-input" class="modal__label">
+        Image Link
+        <input
+          id="card-image-input"
+          type="url"
+          class="modal__input"
+          placeholder="Place a link to picture"
+        />
+      </label>
+      <label for="card-caption-input" class="modal__label">
+        Caption
+        <input
+          id="card-caption-input"
+          type="text"
+          class="modal__input"
+          placeholder="Type your caption"
+        />
+      </label>
+      <button type="submit" class="modal__submit-btn">Save</button>
+    </form>
+  </div>
+</div>
+
+<!-- ✅ script goes here, outside modal -->
+<script src="./scripts/index.js" defer></script>
+</body>
 </html>
+
