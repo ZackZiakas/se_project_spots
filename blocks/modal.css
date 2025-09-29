@@ -10,10 +10,18 @@
   justify-content: center;
   align-items: center;
   font-family: "Poppins", sans-serif;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s, opacity 0.3s ease-in-out;
+  /* also make sure it's off-screen */
+  pointer-events: none; /* prevents clicks when invisible */
 }
 /* add font styles for everything and responsive design */
 .modal_is-opened {
   visibility: visible;
+  opacity: 1;
+  transition-delay: 0s; /* show instantly */
+  pointer-events: auto;
 }
 
 .modal__container {
