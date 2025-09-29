@@ -1,3 +1,11 @@
+/* Default (mobile) */
 .content {
   padding: 0 16px;
+}
+
+/* Desktop and larger screens */
+@media screen and (min-width: 768px) {
+  .content {
+    padding: 0 20px;
+  }
 }
