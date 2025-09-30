@@ -2,6 +2,8 @@
   visibility: hidden;
   background-color: #00000080;
   position: fixed;
+  opacity: 0;
+  padding: 0 10px;
   top: 0;
   right: 0;
   bottom: 0;
@@ -38,6 +40,10 @@
   width: 40px;
   height: 40px;
   opacity: 0.4; /* use 0.4 instead of 40% for proper CSS */
+  background-image: url("../images/close.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   border: none;
   background-color: #fff;
   cursor: pointer; /* indicates interactivity */
@@ -46,6 +52,7 @@
 
 .modal__close-btn:hover {
   opacity: 0.7; /* visual feedback on hover */
+  background-image: url("../images/Blackclose.svg");
 }
 
 .modal__title {
@@ -77,8 +84,6 @@
   display: block;
   margin: 8px 0 0;
   width: 100%;
-  width: 630px;
-  height: 52;
   opacity: 1;
   border-width: 1px;
   border-radius: 8px;
@@ -86,6 +91,7 @@
   padding-right: 12px;
   padding-bottom: 16px;
   padding-left: 12px;
+  box-sizing: border-box;
 }
 
 .modal__input::placeholder {
@@ -118,8 +124,7 @@
 /* Responsive styles */
 @media screen and (max-width: 600px) {
   .modal__container {
-    max-width: 90%;
-    padding: 24px;
+    padding: 22px 12px 12px;
   }
 
   .modal__title {
@@ -129,5 +134,9 @@
   .modal__close-btn {
     top: 16px;
     right: 16px;
+  }
+
+  .modal__submit-btn {
+    width: unset;
   }
 }
