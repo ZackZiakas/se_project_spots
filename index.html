@@ -4,14 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Spots new project 3" />
-    <meta name="author" content="zack ziakas" />
-    <meta name="keywords" content="HTML,CSS" />
+    <meta name="author" content="Zack Ziakas" />
+    <meta name="keywords" content="HTML,CSS,JavaScript" />
     <link rel="stylesheet" href="./pages/index.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>Spots</title>
   </head>
   <body>
     <div class="page">
+      <!-- Header -->
       <header class="header">
         <img
           src="./images/Logo-spots.svg"
@@ -19,7 +20,10 @@
           class="header__logo"
         />
       </header>
+
+      <!-- Main Content -->
       <main class="content">
+        <!-- Profile Section -->
         <section class="profile page__section">
           <img
             src="./images/avatar.jpg"
@@ -37,82 +41,33 @@
             <img src="./images/Plus-icon.svg" alt="New Post" />New Post
           </button>
         </section>
+
+        <!-- Cards Section -->
         <section class="cards page__section">
           <ul class="cards__list">
-            <li class="card">
-              <img
-                src="./images/1-photo-by-moritz-feldmann-from-pexels.jpg"
-                alt="Val Thorens"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__title">Val Thorens</h2>
-                <button type="button" class="card__like-btn"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/2-photo-by-ceiline-from-pexels.jpg"
-                alt="Restaurant terrace"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__title">Restaurant terrace</h2>
-                <button type="button" class="card__like-btn"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/3-photo-by-tubanur-dogan-from-pexels.jpg"
-                alt="An outdoor cafe"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__title">An outdoor cafe</h2>
-                <button type="button" class="card__like-btn"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/4-photo-by-maurice-laschet-from-pexels.jpg"
-                alt="A very long bridge, over the forest..."
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__title">
-                  A very long bridge, over the forest...
-                </h2>
-                <button type="button" class="card__like-btn"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/5-photo-by-van-anh-nguyen-from-pexels.jpg"
-                alt="Tunnel with morning light"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__title">Tunnel with morning light</h2>
-                <button type="button" class="card__like-btn"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/6-photo-by-moritz-feldmann-from-pexels.jpg"
-                alt="Mountain house"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__title">Mountain house</h2>
-                <button type="button" class="card__like-btn"></button>
-              </div>
-            </li>
+            <template id="card-template">
+              <li class="card">
+                <button class="card__delete-button" type="button"></button>
+                <img
+                  src="./images/State=Default.svg"
+                  alt=""
+                  class="card__image"
+                />
+                <div class="card__content">
+                  <h2 class="card__title"></h2>
+                  <button type="button" class="card__like-btn"></button>
+                </div>
+              </li>
+            </template>
           </ul>
         </section>
       </main>
+
+      <!-- Footer -->
       <footer class="footer">
         <p class="footer__text">© 2025 Spots. All rights reserved.</p>
       </footer>
+
       <!-- Edit Profile Modal -->
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
@@ -121,7 +76,7 @@
             class="modal__close-btn"
             aria-label="Close"
           ></button>
-          <h2 class="modal__title">Edit profile</h2>
+          <h2 class="modal__title">Edit Profile</h2>
           <form class="modal__form">
             <label for="profile-name-input" class="modal__label">
               Name
@@ -178,7 +133,21 @@
           </form>
         </div>
       </div>
+
+      <!-- Preview Modal -->
+      <div class="modal modal_type_preview" id="preview-modal">
+        <div class="modal__image-container">
+          <button
+            type="button"
+            class="modal__close-btn modal__close_type_preview"
+            aria-label="Close"
+          ></button>
+          <img src="" alt="" class="modal__image" />
+          <p class="modal__caption"></p>
+        </div>
+      </div>
     </div>
+
     <script src="./scripts/index.js" defer></script>
   </body>
 </html>
