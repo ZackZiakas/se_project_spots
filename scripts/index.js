@@ -86,8 +86,11 @@ const linkInput = newPostForm.querySelector("#card-image-input"); // image link
 // Open New Post modal
 newPostBtn.addEventListener("click", () => openModal(newPostModal));
 
-// Close New Post modal
-newPostCloseBtn.addEventListener("click", () => closeModal(newPostModal));
+// Close New Post modal with form reset
+newPostCloseBtn.addEventListener("click", () => {
+  closeModal(newPostModal);
+  newPostForm.reset(); // Reset form when closing via close button
+});
 
 // Handle New Post form submit
 function handleAddCardSubmit(evt) {

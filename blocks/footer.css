@@ -13,7 +13,7 @@
   margin: 0;
 }
 
-@media screen and (max-width: 629px) {
+@media screen and (max-width: 627px) {
   /* Profile adjustments */
   .footer {
     margin: 40px 20px 0;

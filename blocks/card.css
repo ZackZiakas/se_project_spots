@@ -59,7 +59,6 @@
 }
 
 .card__delete-button:hover {
-  background-color: none; /* Slightly darker on hover */
   background-image: url("../images/Hover-Default.svg");
   background-repeat: no-repeat;
   background-position: center;

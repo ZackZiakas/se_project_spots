@@ -54,7 +54,7 @@
   align-self: flex-start; /* aligns left inside column */
   background-color: transparent;
   border: none;
-  opacity: 70%; /* use decimal instead of % */
+  opacity: 0.7; /* use decimal instead of % */
   gap: 8px; /* tighter spacing */
   cursor: pointer;
   font-size: 16px;
@@ -69,7 +69,7 @@
   border-radius: 8px;
   background-color: #212121;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
-  font-weight: 500px;
+  font-weight: 500;
   font-size: 16px;
   line-height: 100%;
   color: #fcf5e5;
@@ -90,7 +90,7 @@
 }
 
 /* ---------- Media Queries (Mobile) ---------- */
-@media screen and (max-width: 629px) {
+@media screen and (max-width: 627px) {
   /* Profile adjustments */
   .profile {
     flex-direction: column;
@@ -126,9 +126,7 @@
     align-items: center; /* vertically centers them */
     justify-content: center; /* centers everything in the button */
     gap: 8px; /* space between icon and text */
-
     width: 100%; /* full width for mobile */
-    grid-column: 3;
     align-self: end;
     padding: 18px 32px;
     border-radius: 8px;

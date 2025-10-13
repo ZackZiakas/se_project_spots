@@ -81,7 +81,7 @@
             <label for="profile-name-input" class="modal__label">
               Name
               <input
-                id="profile-name-input"
+                id="required"
                 type="text"
                 class="modal__input"
                 placeholder="Type your name"
@@ -90,7 +90,7 @@
             <label for="profile-description-input" class="modal__label">
               Description
               <input
-                id="profile-description-input"
+                id="required"
                 type="text"
                 class="modal__input"
                 placeholder="Describe yourself"
@@ -114,7 +114,7 @@
             <label for="card-image-input" class="modal__label">
               Image Link
               <input
-                id="card-image-input"
+                id="required"
                 type="url"
                 class="modal__input"
                 placeholder="Place a link to picture"
@@ -124,7 +124,7 @@
               Caption
               <input
                 id="card-caption-input"
-                type="text"
+                type="required"
                 class="modal__input"
                 placeholder="Type your caption"
               />
@@ -139,10 +139,10 @@
         <div class="modal__image-container">
           <button
             type="button"
-            class="modal__close-btn modal__close_type_preview"
+            class="modal__close-btn modal__close-btn_type_preview"
             aria-label="Close"
           ></button>
-          <img src="" alt="" class="modal__image" />
+          <img src="#" alt="Preview image" class="modal__image" />
           <p class="modal__caption"></p>
         </div>
       </div>
