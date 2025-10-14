@@ -129,6 +129,10 @@
 /* ---------- Preview Modal Content ---------- */
 .modal__image-container {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal__image {
@@ -140,14 +144,27 @@
   display: block;
 }
 
+/* Updated Caption Styles */
 .modal__caption {
   color: #fff;
-  text-align: center;
-  margin-top: 8px;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: left;
+  margin-top: 10px;
+  padding: 0 12px 12px;
+  word-wrap: break-word;
 }
 
-/* ---------- Responsive ---------- */
+@media screen and (min-width: 768px) {
+  .modal__caption {
+    font-size: 16px;
+    padding: 0 20px 20px;
+    margin-top: 12px;
+  }
+}
+
+/* ---------- Responsive Adjustments ---------- */
 @media screen and (max-width: 627px) {
   .modal__container {
     padding: 22px 12px 12px;
@@ -166,7 +183,8 @@
     width: auto;
   }
 
-  .modal__close_type_preview {
+  /* Fixed selector for preview close button */
+  .modal__close-btn_type_preview {
     top: -40px;
     right: 0;
   }
