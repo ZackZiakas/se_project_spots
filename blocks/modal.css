@@ -89,7 +89,6 @@
   line-height: 1.1;
   color: #212121;
   opacity: 0.7;
-  margin-bottom: 32px;
   display: block;
 }
 
@@ -101,28 +100,35 @@
   border-radius: 8px;
   padding: 16px 12px;
   box-sizing: border-box;
-  margin: 8px 0 0;
 }
 
 .modal__input_type_error {
   border: 1px solid rgba(250, 0, 0, 0.6);
+  outline: 2px solid rgba(250, 0, 0, 0.12); /* subtle a11y glow */
 }
 
 .modal__input::placeholder {
   color: rgba(33, 33, 33, 0.3);
 }
 
+/* ---------- Validation Messages (config: .modal__error + .modal__error_visible) ---------- */
 .modal__error {
   display: block;
+  min-height: 16px; /* prevents layout shift */
   margin-top: 8px;
-  color: red;
-  visibility: hidden;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #d00;
+  opacity: 0; /* hidden by default */
+  transition: opacity 0.15s ease-in-out;
 }
-/*do font and color/*
 
+.modal__error_visible {
+  opacity: 1;
+}
 
-/* ---------- Submit Button ---------- */
-.modal__submit-btn {
+/* ---------- Submit Button (config: .modal__button + .modal__button_disabled) ---------- */
+.modal__button {
   margin-top: 24px;
   width: 156px;
   height: 52px;
@@ -134,78 +140,5 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s ease, opacity 0.2s ease;
-}
-
-.modal__submit-btn:hover {
-  background-color: #333333;
-  opacity: 0.9;
-}
-
-/* ---------- Preview Modal Content ---------- */
-.modal__image-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal__image {
-  max-width: 80vw;
-  max-height: 80vh;
-  width: 100%;
-  object-fit: contain;
-  border-radius: 8px;
-  display: block;
-}
-
-/* Updated Caption Styles */
-.modal__caption {
-  margin: 0;
-  padding: 4px 8px;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 24px;
-  color: #fff;
-  position: absolute;
-  background-color: #212121;
-  border-radius: 8px;
-  left: 0;
-  top: calc(100% + 10px);
-}
-
-@media screen and (max-width: 768px) {
-  .modal__caption {
-    font-size: 16px;
-  }
-}
-
-/* ---------- Responsive Adjustments ---------- */
-@media screen and (max-width: 627px) {
-  .modal__container {
-    padding: 22px 12px 12px;
-  }
-
-  .modal__title {
-    font-size: 18px;
-  }
-
-  .modal__close-btn {
-    top: 16px;
-    right: 16px;
-  }
-
-  .modal__submit-btn {
-    width: auto;
-  }
-
-  /* Fixed selector for preview close button */
-  .modal__close-btn_type_preview {
-    top: -40px;
-    right: 0;
-  }
-
-  .modal__image {
-    max-width: 100%;
-    height: auto;
-  }
+  transition: background;
 }

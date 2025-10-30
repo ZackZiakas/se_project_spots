@@ -34,7 +34,6 @@ const initialCards = [
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
 }
-
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
 }
@@ -59,9 +58,9 @@ editProfileBtn.addEventListener("click", () => {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
 
-  // ✅ NEW: clear errors & set correct button state before showing
+  // pass settings
   if (typeof resetFormValidation === "function") {
-    resetFormValidation(editProfileForm);
+    resetFormValidation(editProfileForm, settings);
   }
   openModal(editProfileModal);
 });
@@ -69,9 +68,9 @@ editProfileBtn.addEventListener("click", () => {
 // Close Edit Profile modal
 editProfileCloseBtn.addEventListener("click", () => {
   closeModal(editProfileModal);
-  editProfileForm.reset(); // ✅ NEW: reset values
+  editProfileForm.reset();
   if (typeof resetFormValidation === "function") {
-    resetFormValidation(editProfileForm); // ✅ NEW: clear errors + fix button
+    resetFormValidation(editProfileForm, settings);
   }
 });
 
@@ -79,11 +78,10 @@ editProfileCloseBtn.addEventListener("click", () => {
 editProfileForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
 
-  // ✅ NEW: guard submit; surface all errors once
   if (!editProfileForm.checkValidity()) {
-    Array.from(editProfileForm.querySelectorAll(".modal__input")).forEach((i) =>
-      checkInputValidity(editProfileForm, i)
-    );
+    Array.from(
+      editProfileForm.querySelectorAll(settings.inputSelector)
+    ).forEach((i) => checkInputValidity(editProfileForm, i, settings));
     return;
   }
 
@@ -93,7 +91,7 @@ editProfileForm.addEventListener("submit", (evt) => {
   closeModal(editProfileModal);
   editProfileForm.reset();
   if (typeof resetFormValidation === "function") {
-    resetFormValidation(editProfileForm);
+    resetFormValidation(editProfileForm, settings);
   }
 });
 
@@ -108,19 +106,18 @@ const linkInput = newPostForm.querySelector("#card-image-input"); // image link
 
 // Open New Post modal
 newPostBtn.addEventListener("click", () => {
-  // ✅ NEW: ensure fresh state every open
   if (typeof resetFormValidation === "function") {
-    resetFormValidation(newPostForm);
+    resetFormValidation(newPostForm, settings);
   }
   openModal(newPostModal);
 });
 
-// Close New Post modal with form reset
+// Close New Post modal
 newPostCloseBtn.addEventListener("click", () => {
   closeModal(newPostModal);
   newPostForm.reset();
   if (typeof resetFormValidation === "function") {
-    resetFormValidation(newPostForm);
+    resetFormValidation(newPostForm, settings);
   }
 });
 
@@ -128,10 +125,9 @@ newPostCloseBtn.addEventListener("click", () => {
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
 
-  // ✅ NEW: guard submit; surface all errors once
   if (!newPostForm.checkValidity()) {
-    Array.from(newPostForm.querySelectorAll(".modal__input")).forEach((i) =>
-      checkInputValidity(newPostForm, i)
+    Array.from(newPostForm.querySelectorAll(settings.inputSelector)).forEach(
+      (i) => checkInputValidity(newPostForm, i, settings)
     );
     return;
   }
@@ -147,10 +143,9 @@ function handleAddCardSubmit(evt) {
   closeModal(newPostModal);
   newPostForm.reset();
   if (typeof resetFormValidation === "function") {
-    resetFormValidation(newPostForm);
+    resetFormValidation(newPostForm, settings);
   }
 }
-
 newPostForm.addEventListener("submit", handleAddCardSubmit);
 
 // ------------------ Preview Modal ------------------

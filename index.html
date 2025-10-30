@@ -70,13 +70,10 @@
 
       <!-- Edit Profile Modal -->
       <div class="modal" id="edit-profile-modal">
-        <div class="modal__container">
-          <button
-            type="button"
-            class="modal__close-btn"
-            aria-label="Close"
-          ></button>
-          <h2 class="modal__title">Edit Profile</h2>
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="edit-profile-title">
+          <button type="button" class="modal__close-btn" aria-label="Close"></button>
+          <h2 class="modal__title" id="edit-profile-title">Edit Profile</h2>
+
           <form class="modal__form">
             <label for="profile-name-input" class="modal__label">
               Name
@@ -89,103 +86,3 @@
                 minlength="2"
                 maxlength="40"
                 required
-                aria-describedby="profile-name-input-error"
-              />
-              <span
-                class="modal__input-error"
-                id="profile-name-input-error"
-              ></span>
-            </label>
-
-            <label for="profile-description-input" class="modal__label">
-              Description
-              <input
-                id="profile-description-input"
-                type="text"
-                class="modal__input"
-                name="about"
-                placeholder="Describe yourself"
-                minlength="2"
-                maxlength="200"
-                required
-                aria-describedby="profile-description-input-error"
-              />
-              <span
-                class="modal__input-error"
-                id="profile-description-input-error"
-              ></span>
-            </label>
-
-            <button type="submit" class="modal__submit-btn">Save</button>
-          </form>
-        </div>
-      </div>
-
-      <!-- New Post Modal -->
-      <div class="modal" id="new-post-modal">
-        <div class="modal__container">
-          <button
-            type="button"
-            class="modal__close-btn"
-            aria-label="Close"
-          ></button>
-          <h2 class="modal__title">New Post</h2>
-          <form class="modal__form">
-            <label for="card-image-input" class="modal__label">
-              Image Link
-              <input
-                id="card-image-input"
-                type="url"
-                class="modal__input"
-                name="link"
-                placeholder="Place a link to picture"
-                required
-                aria-describedby="card-image-input-error"
-              />
-              <span
-                class="modal__input-error"
-                id="card-image-input-error"
-              ></span>
-            </label>
-
-            <label for="card-caption-input" class="modal__label">
-              Caption
-              <input
-                id="card-caption-input"
-                type="text"
-                class="modal__input"
-                name="name"
-                placeholder="Type your caption"
-                minlength="2"
-                maxlength="30"
-                required
-                aria-describedby="card-caption-input-error"
-              />
-              <span
-                class="modal__input-error"
-                id="card-caption-input-error"
-              ></span>
-            </label>
-
-            <button type="submit" class="modal__submit-btn">Save</button>
-          </form>
-        </div>
-      </div>
-
-      <!-- Preview Modal -->
-      <div class="modal modal_type_preview" id="preview-modal">
-        <div class="modal__image-container">
-          <button
-            type="button"
-            class="modal__close-btn modal__close-btn_type_preview"
-            aria-label="Close"
-          ></button>
-          <img src="#" alt="Preview image" class="modal__image" />
-          <p class="modal__caption"></p>
-        </div>
-      </div>
-    </div>
-    <script src="./scripts/validation.js" defer></script>
-    <script src="./scripts/index.js" defer></script>
-  </body>
-</html>

@@ -1,20 +1,30 @@
-// ------------- Validation helpers -------------
-const showInputError = (formEl, inputEl, errorMsg) => {
-  const errorMsgID = `${inputEl.id}-error`;
-  const errorMsgEl = formEl.querySelector(`#${errorMsgID}`);
-  if (!errorMsgEl) return;
-  inputEl.classList.add("modal__input_type_error");
-  errorMsgEl.textContent = errorMsg;
-  errorMsgEl.classList.add("modal__input-error_active");
+// ================== Config (yours) ==================
+const settings = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
 };
 
-const hideInputError = (formEl, inputEl) => {
+// ================== Validation helpers ==================
+const showInputError = (formEl, inputEl, errorMsg, cfg = settings) => {
   const errorMsgID = `${inputEl.id}-error`;
   const errorMsgEl = formEl.querySelector(`#${errorMsgID}`);
   if (!errorMsgEl) return;
-  inputEl.classList.remove("modal__input_type_error");
+  inputEl.classList.add(cfg.inputErrorClass);
+  errorMsgEl.textContent = errorMsg;
+  errorMsgEl.classList.add(cfg.errorClass);
+};
+
+const hideInputError = (formEl, inputEl, cfg = settings) => {
+  const errorMsgID = `${inputEl.id}-error`;
+  const errorMsgEl = formEl.querySelector(`#${errorMsgID}`);
+  if (!errorMsgEl) return;
+  inputEl.classList.remove(cfg.inputErrorClass);
   errorMsgEl.textContent = "";
-  errorMsgEl.classList.remove("modal__input-error_active");
+  errorMsgEl.classList.remove(cfg.errorClass);
 };
 
 // Treat whitespace-only as invalid for required text-like inputs
@@ -25,70 +35,67 @@ function updateCustomTextValidity(inputEl) {
     ) || inputEl.tagName === "TEXTAREA";
 
   if (isTextLike && inputEl.required) {
-    if (inputEl.value.trim().length === 0) {
-      inputEl.setCustomValidity("Please fill out this field.");
-    } else {
-      inputEl.setCustomValidity("");
-    }
+    inputEl.setCustomValidity(
+      inputEl.value.trim().length === 0 ? "Please fill out this field." : ""
+    );
   } else {
     inputEl.setCustomValidity("");
   }
 }
 
-const checkInputValidity = (formEl, inputEl) => {
+const checkInputValidity = (formEl, inputEl, cfg = settings) => {
   updateCustomTextValidity(inputEl);
   if (!inputEl.validity.valid) {
-    showInputError(formEl, inputEl, inputEl.validationMessage);
+    showInputError(formEl, inputEl, inputEl.validationMessage, cfg);
   } else {
-    hideInputError(formEl, inputEl);
+    hideInputError(formEl, inputEl, cfg);
   }
 };
 
 const hasInvalidInput = (inputList) =>
   inputList.some((input) => !input.validity.valid);
 
-const getSubmitButton = (formEl) =>
-  formEl.querySelector(".modal__submit-btn") ||
-  formEl.querySelector(".modal__submit"); // supports either class
+const getSubmitButton = (formEl, cfg = settings) =>
+  formEl.querySelector(cfg.submitButtonSelector);
 
-const toggleButtonState = (inputList, buttonEl) => {
+const toggleButtonState = (inputList, buttonEl, cfg = settings) => {
   if (!buttonEl) return;
   const disabled = hasInvalidInput(inputList);
   buttonEl.disabled = disabled;
-  buttonEl.classList.toggle("modal__submit-btn_disabled", disabled);
+  buttonEl.classList.toggle(cfg.inactiveButtonClass, disabled);
 };
 
 // Clear all UI errors + fix button (use after form.reset() or before opening)
-function resetFormValidation(formEl) {
-  const inputs = Array.from(formEl.querySelectorAll(".modal__input"));
-  const btn = getSubmitButton(formEl);
+function resetFormValidation(formEl, cfg = settings) {
+  const inputs = Array.from(formEl.querySelectorAll(cfg.inputSelector));
+  const btn = getSubmitButton(formEl, cfg);
   inputs.forEach((input) => {
     input.setCustomValidity("");
-    hideInputError(formEl, input);
+    hideInputError(formEl, input, cfg);
   });
-  toggleButtonState(inputs, btn);
+  toggleButtonState(inputs, btn, cfg);
 }
 
 // Surface all errors at once (used on invalid submit)
-function validateWholeForm(formEl) {
-  const inputs = Array.from(formEl.querySelectorAll(".modal__input"));
-  const btn = getSubmitButton(formEl);
-  inputs.forEach((input) => checkInputValidity(formEl, input));
-  toggleButtonState(inputs, btn);
+function validateWholeForm(formEl, cfg = settings) {
+  const inputs = Array.from(formEl.querySelectorAll(cfg.inputSelector));
+  const btn = getSubmitButton(formEl, cfg);
+  inputs.forEach((input) => checkInputValidity(formEl, input, cfg));
+  toggleButtonState(inputs, btn, cfg);
 }
 
-// ------------- Wire up listeners -------------
-const setEventListeners = (formEl) => {
-  const inputList = Array.from(formEl.querySelectorAll(".modal__input"));
-  const buttonEl = getSubmitButton(formEl);
+// ================== Wiring ==================
+const setEventListeners = (formEl, cfg = settings) => {
+  const inputList = Array.from(formEl.querySelectorAll(cfg.inputSelector));
+  const buttonEl = getSubmitButton(formEl, cfg);
 
   // initial state
-  toggleButtonState(inputList, buttonEl);
+  toggleButtonState(inputList, buttonEl, cfg);
 
   inputList.forEach((inputEl) => {
     inputEl.addEventListener("input", () => {
-      checkInputValidity(formEl, inputEl);
-      toggleButtonState(inputList, buttonEl);
+      checkInputValidity(formEl, inputEl, cfg);
+      toggleButtonState(inputList, buttonEl, cfg);
     });
   });
 
@@ -96,23 +103,20 @@ const setEventListeners = (formEl) => {
   formEl.addEventListener("submit", (e) => {
     if (!formEl.checkValidity()) {
       e.preventDefault();
-      validateWholeForm(formEl);
+      validateWholeForm(formEl, cfg);
     }
   });
 
-  // Expose a convenience method on the form element (optional, handy in your modal code)
-  formEl.resetValidationUI = () => resetFormValidation(formEl);
+  // Optional convenience handle
+  formEl.resetValidationUI = () => resetFormValidation(formEl, cfg);
 };
 
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll(".modal__form"));
+const enableValidation = (cfg = settings) => {
+  const formList = Array.from(document.querySelectorAll(cfg.formSelector));
   formList.forEach((formEl) => {
     formEl.setAttribute("novalidate", "true");
-    setEventListeners(formEl);
+    setEventListeners(formEl, cfg);
   });
 };
 
-enableValidation();
-
-// Optional: export helpers to use in index.js if you want
-window.resetFormValidation = resetFormValidation;
+enableValidation(settings);
