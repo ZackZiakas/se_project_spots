@@ -58,20 +58,43 @@ const profileDescriptionEl = document.querySelector(".profile__description");
 editProfileBtn.addEventListener("click", () => {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
+
+  // ✅ NEW: clear errors & set correct button state before showing
+  if (typeof resetFormValidation === "function") {
+    resetFormValidation(editProfileForm);
+  }
   openModal(editProfileModal);
 });
 
 // Close Edit Profile modal
-editProfileCloseBtn.addEventListener("click", () =>
-  closeModal(editProfileModal)
-);
+editProfileCloseBtn.addEventListener("click", () => {
+  closeModal(editProfileModal);
+  editProfileForm.reset(); // ✅ NEW: reset values
+  if (typeof resetFormValidation === "function") {
+    resetFormValidation(editProfileForm); // ✅ NEW: clear errors + fix button
+  }
+});
 
 // Handle Edit Profile form submit
 editProfileForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  profileNameEl.textContent = editProfileNameInput.value;
-  profileDescriptionEl.textContent = editProfileDescriptionInput.value;
+
+  // ✅ NEW: guard submit; surface all errors once
+  if (!editProfileForm.checkValidity()) {
+    Array.from(editProfileForm.querySelectorAll(".modal__input")).forEach((i) =>
+      checkInputValidity(editProfileForm, i)
+    );
+    return;
+  }
+
+  profileNameEl.textContent = editProfileNameInput.value.trim();
+  profileDescriptionEl.textContent = editProfileDescriptionInput.value.trim();
+
   closeModal(editProfileModal);
+  editProfileForm.reset();
+  if (typeof resetFormValidation === "function") {
+    resetFormValidation(editProfileForm);
+  }
 });
 
 // ------------------ New Post ------------------
@@ -84,21 +107,38 @@ const nameInput = newPostForm.querySelector("#card-caption-input"); // caption
 const linkInput = newPostForm.querySelector("#card-image-input"); // image link
 
 // Open New Post modal
-newPostBtn.addEventListener("click", () => openModal(newPostModal));
+newPostBtn.addEventListener("click", () => {
+  // ✅ NEW: ensure fresh state every open
+  if (typeof resetFormValidation === "function") {
+    resetFormValidation(newPostForm);
+  }
+  openModal(newPostModal);
+});
 
 // Close New Post modal with form reset
 newPostCloseBtn.addEventListener("click", () => {
   closeModal(newPostModal);
-  newPostForm.reset(); // Reset form when closing via close button
+  newPostForm.reset();
+  if (typeof resetFormValidation === "function") {
+    resetFormValidation(newPostForm);
+  }
 });
 
 // Handle New Post form submit
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
 
+  // ✅ NEW: guard submit; surface all errors once
+  if (!newPostForm.checkValidity()) {
+    Array.from(newPostForm.querySelectorAll(".modal__input")).forEach((i) =>
+      checkInputValidity(newPostForm, i)
+    );
+    return;
+  }
+
   const inputValues = {
-    name: nameInput.value,
-    link: linkInput.value,
+    name: nameInput.value.trim(),
+    link: linkInput.value.trim(),
   };
 
   const cardElement = getCardElement(inputValues);
@@ -106,6 +146,9 @@ function handleAddCardSubmit(evt) {
 
   closeModal(newPostModal);
   newPostForm.reset();
+  if (typeof resetFormValidation === "function") {
+    resetFormValidation(newPostForm);
+  }
 }
 
 newPostForm.addEventListener("submit", handleAddCardSubmit);

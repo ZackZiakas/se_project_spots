@@ -84,20 +84,38 @@
                 id="profile-name-input"
                 type="text"
                 class="modal__input"
+                name="name"
                 placeholder="Type your name"
+                minlength="2"
+                maxlength="40"
                 required
+                aria-describedby="profile-name-input-error"
               />
+              <span
+                class="modal__input-error"
+                id="profile-name-input-error"
+              ></span>
             </label>
+
             <label for="profile-description-input" class="modal__label">
               Description
               <input
                 id="profile-description-input"
                 type="text"
                 class="modal__input"
+                name="about"
                 placeholder="Describe yourself"
+                minlength="2"
+                maxlength="200"
                 required
+                aria-describedby="profile-description-input-error"
               />
+              <span
+                class="modal__input-error"
+                id="profile-description-input-error"
+              ></span>
             </label>
+
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
         </div>
@@ -119,20 +137,36 @@
                 id="card-image-input"
                 type="url"
                 class="modal__input"
+                name="link"
                 placeholder="Place a link to picture"
                 required
+                aria-describedby="card-image-input-error"
               />
+              <span
+                class="modal__input-error"
+                id="card-image-input-error"
+              ></span>
             </label>
+
             <label for="card-caption-input" class="modal__label">
               Caption
               <input
                 id="card-caption-input"
                 type="text"
                 class="modal__input"
+                name="name"
                 placeholder="Type your caption"
+                minlength="2"
+                maxlength="30"
                 required
+                aria-describedby="card-caption-input-error"
               />
+              <span
+                class="modal__input-error"
+                id="card-caption-input-error"
+              ></span>
             </label>
+
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
         </div>
@@ -151,7 +185,7 @@
         </div>
       </div>
     </div>
-
+    <script src="./scripts/validation.js" defer></script>
     <script src="./scripts/index.js" defer></script>
   </body>
 </html>
