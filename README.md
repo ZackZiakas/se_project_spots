@@ -34,3 +34,7 @@ https://zackziakas.github.io/se_project_spots/
 
 Google Drive link for video.
 https://drive.google.com/file/d/1-syQpLbE78u05FLZ7iXbgFH6CW22-EmY/view?usp=sharing
+
+## Project Pitch Video
+
+Check out [this video](https://drive.google.com/file/d/1rpYgA6QZVmG0puE0RSZNOCeENiPq96fw/view?usp=sharing), where I describe my project and some challenges I faced while building it.

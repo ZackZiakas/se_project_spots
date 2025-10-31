@@ -142,3 +142,78 @@
   cursor: pointer;
   transition: background;
 }
+
+.modal__image-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__image {
+  max-width: 80vw;
+  max-height: 80vh;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Updated Caption Styles */
+.modal__caption {
+  margin: 0;
+  padding: 4px 8px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #fff;
+  position: absolute;
+  background-color: #212121;
+  border-radius: 8px;
+  left: 0;
+  top: calc(100% + 10px);
+}
+
+/* ---------- Focus visibility (optional a11y nicety) ---------- */
+.modal__input:focus-visible,
+.modal__close-btn:focus-visible,
+.modal__button:focus-visible {
+  outline: 2px solid #1878dc;
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 768px) {
+  .modal__caption {
+    font-size: 16px;
+  }
+}
+
+/* ---------- Responsive Adjustments ---------- */
+@media screen and (max-width: 627px) {
+  .modal__container {
+    padding: 22px 12px 12px;
+  }
+
+  .modal__title {
+    font-size: 18px;
+  }
+
+  .modal__close-btn {
+    top: 16px;
+    right: 16px;
+  }
+
+  .modal__button {
+    width: auto;
+  }
+
+  /* Fixed selector for preview close button */
+  .modal__close-btn_type_preview {
+    top: -40px;
+    right: 0;
+  }
+
+  .modal__image {
+    max-width: 100%;
+    height: auto;
+  }
+}
