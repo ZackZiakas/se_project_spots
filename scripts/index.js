@@ -31,6 +31,15 @@ const initialCards = [
 ];
 
 // ------------------ Helper functions ------------------
+
+document.querySelectorAll(".modal").forEach((modal) => {
+  modal.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("modal")) {
+      closeModal(modal);
+    }
+  });
+});
+
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
 }
@@ -106,19 +115,15 @@ const linkInput = newPostForm.querySelector("#card-image-input"); // image link
 
 // Open New Post modal
 newPostBtn.addEventListener("click", () => {
-  if (typeof resetFormValidation === "function") {
-    resetFormValidation(newPostForm, settings);
-  }
+  // Reset only after a successful submit, not on modal open
   openModal(newPostModal);
 });
 
 // Close New Post modal
 newPostCloseBtn.addEventListener("click", () => {
   closeModal(newPostModal);
-  newPostForm.reset();
-  if (typeof resetFormValidation === "function") {
-    resetFormValidation(newPostForm, settings);
-  }
+
+  // Don't reset the form or validation here
 });
 
 // Handle New Post form submit

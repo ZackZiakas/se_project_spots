@@ -128,6 +128,18 @@
 }
 
 /* ---------- Submit Button (config: .modal__button + .modal__button_disabled) ---------- */
+
+.modal__button_disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.modal__button_disabled:hover,
+.modal__button_disabled:active {
+  background-color: #212121; /* Keeps the background the same to avoid visual changes */
+}
+
 .modal__button {
   margin-top: 24px;
   width: 156px;
