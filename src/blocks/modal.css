@@ -65,7 +65,7 @@
   position: absolute;
   top: 0;
   right: -32px;
-  background-image: url(../images/White-Close.svg);
+  background-image: url("../images/White-Close.svg");
 }
 
 /* ---------- Modal Content ---------- */
@@ -128,7 +128,6 @@
 }
 
 /* ---------- Submit Button (config: .modal__button + .modal__button_disabled) ---------- */
-
 .modal__button_disabled {
   opacity: 0.5;
   pointer-events: none;
@@ -152,9 +151,54 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background;
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
 }
 
+/* ---------- Delete confirmation modal buttons ---------- */
+#delete-modal .modal__form {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Base button look inside delete modal */
+#delete-modal .modal__button {
+  margin-top: 0; /* no extra top margin here */
+  min-width: 120px;
+  height: 52px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* DELETE (left) - red primary button */
+#delete-modal .modal__button[type="submit"] {
+  background-color: #ff3b30; /* red */
+  border: 1px solid #ff3b30;
+  color: #ffffff;
+}
+
+#delete-modal .modal__button[type="submit"]:hover {
+  background-color: #e23328; /* slightly darker on hover */
+  border-color: #e23328;
+}
+
+/* CANCEL (right) - white secondary button */
+#delete-modal .modal__button_type_cancel {
+  background-color: #ffffff;
+  color: #212121;
+  border: 1px solid #212121;
+}
+
+#delete-modal .modal__button_type_cancel:hover {
+  background-color: #212121;
+  color: #ffffff;
+}
+
+/* ---------- Image Preview Modal ---------- */
 .modal__image-container {
   position: relative;
   display: flex;
@@ -191,6 +235,13 @@
 .modal__button:focus-visible {
   outline: 2px solid #1878dc;
   outline-offset: 2px;
+}
+
+/* (generic cancel style if used elsewhere outside delete modal) */
+.modal__button_type_cancel {
+  background-color: transparent;
+  color: #212121;
+  border-color: #ccc;
 }
 
 @media screen and (max-width: 768px) {

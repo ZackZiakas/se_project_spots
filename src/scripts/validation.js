@@ -1,5 +1,5 @@
-// ================== Config (yours) ==================
-const settings = {
+// ================== Config (shared) ==================
+export const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
@@ -13,6 +13,7 @@ const showInputError = (formEl, inputEl, errorMsg, cfg = settings) => {
   const errorMsgID = `${inputEl.id}-error`;
   const errorMsgEl = formEl.querySelector(`#${errorMsgID}`);
   if (!errorMsgEl) return;
+
   inputEl.classList.add(cfg.inputErrorClass);
   errorMsgEl.textContent = errorMsg;
   errorMsgEl.classList.add(cfg.errorClass);
@@ -22,6 +23,7 @@ const hideInputError = (formEl, inputEl, cfg = settings) => {
   const errorMsgID = `${inputEl.id}-error`;
   const errorMsgEl = formEl.querySelector(`#${errorMsgID}`);
   if (!errorMsgEl) return;
+
   inputEl.classList.remove(cfg.inputErrorClass);
   errorMsgEl.textContent = "";
   errorMsgEl.classList.remove(cfg.errorClass);
@@ -43,8 +45,9 @@ function updateCustomTextValidity(inputEl) {
   }
 }
 
-const checkInputValidity = (formEl, inputEl, cfg = settings) => {
+export const checkInputValidity = (formEl, inputEl, cfg = settings) => {
   updateCustomTextValidity(inputEl);
+
   if (!inputEl.validity.valid) {
     showInputError(formEl, inputEl, inputEl.validationMessage, cfg);
   } else {
@@ -66,13 +69,15 @@ const toggleButtonState = (inputList, buttonEl, cfg = settings) => {
 };
 
 // Clear all UI errors + fix button (use after form.reset() or before opening)
-function resetFormValidation(formEl, cfg = settings) {
+export function resetFormValidation(formEl, cfg = settings) {
   const inputs = Array.from(formEl.querySelectorAll(cfg.inputSelector));
   const btn = getSubmitButton(formEl, cfg);
+
   inputs.forEach((input) => {
     input.setCustomValidity("");
     hideInputError(formEl, input, cfg);
   });
+
   toggleButtonState(inputs, btn, cfg);
 }
 
@@ -80,6 +85,7 @@ function resetFormValidation(formEl, cfg = settings) {
 function validateWholeForm(formEl, cfg = settings) {
   const inputs = Array.from(formEl.querySelectorAll(cfg.inputSelector));
   const btn = getSubmitButton(formEl, cfg);
+
   inputs.forEach((input) => checkInputValidity(formEl, input, cfg));
   toggleButtonState(inputs, btn, cfg);
 }
@@ -111,12 +117,14 @@ const setEventListeners = (formEl, cfg = settings) => {
   formEl.resetValidationUI = () => resetFormValidation(formEl, cfg);
 };
 
-const enableValidation = (cfg = settings) => {
+export const enableValidation = (cfg = settings) => {
   const formList = Array.from(document.querySelectorAll(cfg.formSelector));
+
   formList.forEach((formEl) => {
     formEl.setAttribute("novalidate", "true");
     setEventListeners(formEl, cfg);
   });
 };
 
-enableValidation(settings);
+// 🔹 NOTE: no automatic enableValidation(settings) call here.
+// The page (index.js) will decide when to run it.
