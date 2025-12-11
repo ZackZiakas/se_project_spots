@@ -25,12 +25,29 @@ document.querySelectorAll(".modal").forEach((modal) => {
   });
 });
 
+// 🔽 New: handle Escape to close any open modal
+function handleEscClose(evt) {
+  if (evt.key === "Escape" || evt.key === "Esc") {
+    const openedModal = document.querySelector(".modal_is-opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
+}
+
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  // start listening for Escape when a modal opens
+  document.addEventListener("keydown", handleEscClose);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+
+  // if no modals are open anymore, remove the listener
+  if (!document.querySelector(".modal_is-opened")) {
+    document.removeEventListener("keydown", handleEscClose);
+  }
 }
 
 // ------------------ Profile elements ------------------
